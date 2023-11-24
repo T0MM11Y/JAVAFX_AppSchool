@@ -1,0 +1,19 @@
+{
+    "java.project.sourcePaths": ["src"],
+    "java.project.outputPath": "bin",
+    "java.project.referencedLibraries": [
+        "lib/**/*.jar",
+        "c:\\Users\\T0MM11Y\\Downloads\\Compressed\\javafx-sdk-11\\lib\\javafx.base.jar",
+        "c:\\Users\\T0MM11Y\\Downloads\\Compressed\\javafx-sdk-11\\lib\\javafx.controls.jar",
+        "c:\\Users\\T0MM11Y\\Downloads\\Compressed\\javafx-sdk-11\\lib\\javafx.fxml.jar",
+        "c:\\Users\\T0MM11Y\\Downloads\\Compressed\\javafx-sdk-11\\lib\\javafx.graphics.jar",
+        "c:\\Users\\T0MM11Y\\Downloads\\Compressed\\javafx-sdk-11\\lib\\javafx.media.jar",
+        "c:\\Users\\T0MM11Y\\Downloads\\Compressed\\javafx-sdk-11\\lib\\javafx.swing.jar",
+        "c:\\Users\\T0MM11Y\\Downloads\\Compressed\\javafx-sdk-11\\lib\\javafx.web.jar",
+        "c:\\Users\\T0MM11Y\\Downloads\\Compressed\\javafx-sdk-11\\lib\\javafx-swt.jar",
+        "c:\\Users\\T0MM11Y\\Downloads\\Compressed\\multiUserInJavaFX-main\\multUserAccount\\dist\\lib\\fontawesomefx-8.2.jar",
+        "c:\\Users\\T0MM11Y\\Downloads\\Compressed\\multiUserInJavaFX-main\\multUserAccount\\dist\\lib\\mysql-connector-java-5.1.48.jar",
+        "c:\\Users\\T0MM11Y\\Downloads\\Compressed\\multiUserInJavaFX-main\\multUserAccount\\dist\\lib\\ojdbc14-10.2.0.2.0.jar",
+        "c:\\Users\\T0MM11Y\\Downloads\\jfreechart-1.0.19.jar"
+    ]
+}

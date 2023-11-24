@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.text.Font?>
+
+<StackPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="368.0" prefWidth="742.0" xmlns="http://javafx.com/javafx/21">
+   <children>
+      <Label prefHeight="183.0" prefWidth="406.0" text="Welcome Guru">
+         <font>
+            <Font name="Courier New" size="29.0" />
+         </font>
+      </Label>
+   </children>
+</StackPane>
