@@ -1,15 +1,185 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIcon?>
+<?import java.lang.String?>
+<?import javafx.scene.chart.AreaChart?>
+<?import javafx.scene.chart.CategoryAxis?>
+<?import javafx.scene.chart.NumberAxis?>
+<?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.shape.Line?>
 <?import javafx.scene.text.Font?>
 
-<StackPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="368.0" prefWidth="742.0" xmlns="http://javafx.com/javafx/21">
+<StackPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="1100.0" stylesheets="@../design/dashboard.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="school_app.SiswaDashboardController">
    <children>
-      <Label prefHeight="183.0" prefWidth="406.0" text="Welcome Siswa">
-         <font>
-            <Font name="Courier New" size="29.0" />
-         </font>
-      </Label>
+      <AnchorPane prefHeight="200.0" prefWidth="200.0" stylesheets="@../design/pageDesign.css">
+         <children>
+            <BorderPane layoutX="145.0" layoutY="100.0" prefHeight="600.0" prefWidth="1100.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+               <top>
+                  <AnchorPane prefHeight="45.0" prefWidth="100.0" BorderPane.alignment="CENTER">
+                     <children>
+                        <AnchorPane prefHeight="46.0" prefWidth="1100.0" styleClass="semi-top" stylesheets="@../design/dashboard.css" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                           <children>
+                              <Button layoutX="1043.0" layoutY="12.0" mnemonicParsing="false" prefHeight="24.0" prefWidth="55.0" styleClass="close-btn" stylesheets="@../design/dashboard.css" AnchorPane.rightAnchor="2.0" AnchorPane.topAnchor="12.0" />
+                              <Button layoutX="976.0" layoutY="16.0" mnemonicParsing="false" prefHeight="24.0" prefWidth="55.0" styleClass="minimize-btn" stylesheets="@../design/dashboard.css" />
+                              <ImageView fitHeight="45.0" fitWidth="42.0" layoutX="23.0" layoutY="4.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../design/SCHOOL.png" />
+                                 </image>
+                              </ImageView>
+                              <Label layoutX="80.0" layoutY="10.0" text="School App">
+                                 <font>
+                                    <Font name="Tahoma" size="22.0" />
+                                 </font>
+                              </Label>
+                           </children>
+                        </AnchorPane>
+                     </children>
+                  </AnchorPane>
+               </top>
+               <left>
+                  <AnchorPane prefHeight="555.0" prefWidth="220.0" BorderPane.alignment="CENTER">
+                     <children>
+                        <AnchorPane layoutY="2.0" prefHeight="552.0" prefWidth="221.0" styleClass="nav" stylesheets="@../design/dashboard.css" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="2.0">
+                           <children>
+                              <ImageView fitHeight="91.0" fitWidth="107.0" layoutX="62.0" layoutY="22.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../design/siswa.png" />
+                                 </image>
+                              </ImageView>
+                              <Label layoutX="61.0" layoutY="133.0" text="Welcome">
+                                 <font>
+                                    <Font name="Cambria Math" size="23.0" />
+                                 </font>
+                              </Label>
+                              <Label layoutX="71.0" layoutY="166.0" opacity="0.62" text="Siswa" textFill="#e86b6b" AnchorPane.bottomAnchor="357.0" AnchorPane.rightAnchor="82.0" AnchorPane.topAnchor="166.0">
+                                 <font>
+                                    <Font name="Tahoma Bold" size="23.0" />
+                                 </font>
+                              </Label>
+                              <Line endX="119.0" layoutX="101.0" layoutY="220.0" startX="-100.0" />
+                              <Button layoutX="20.0" layoutY="246.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="180.0" stylesheets="@../design/dashboard.css" text="Dashboard" />
+                              <Button layoutX="20.0" layoutY="292.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="180.0" text="Siswa" />
+                              <Button layoutX="21.0" layoutY="336.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="180.0" text="Nilai" />
+                              <Button layoutX="20.0" layoutY="380.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="180.0" text="Kelas" />
+                              <Button fx:id="siswa_btn_logout" layoutX="21.0" layoutY="478.0" mnemonicParsing="false" onAction="#logout" styleClass="logout" stylesheets="@../design/pageDesign.css">
+                                 <graphic>
+                                    <FontAwesomeIcon fill="#4d3c3c" glyphName="SIGN_OUT" size="2em" styleClass="logout" />
+                                 </graphic>
+                              </Button>
+                              <Label layoutX="62.0" layoutY="485.0" text="LogOut">
+                                 <font>
+                                    <Font name="Monospaced Regular" size="17.0" />
+                                 </font>
+                              </Label>
+                              <Button layoutX="21.0" layoutY="426.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="180.0" text="Kelas" />
+                           </children>
+                        </AnchorPane>
+                     </children>
+                  </AnchorPane>
+               </left>
+               <center>
+                  <AnchorPane prefHeight="236.0" prefWidth="749.0" styleClass="border-pane" stylesheets="@../design/dashboard.css" BorderPane.alignment="CENTER">
+                     <children>
+                        <AnchorPane layoutY="1.0" opacity="0.67" prefHeight="554.0" prefWidth="863.0" styleClass="white-form" stylesheets="@../design/dashboard.css" AnchorPane.bottomAnchor="-1.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="16.0" AnchorPane.topAnchor="1.0">
+                           <children>
+                              <AnchorPane layoutX="20.0" layoutY="23.0" prefHeight="180.0" prefWidth="828.0" stylesheets="@../design/dashboard.css">
+                                 <styleClass>
+                                    <String fx:value="white-bg" />
+                                    <String fx:value="shadow" />
+                                 </styleClass>
+                                 <children>
+                                    <AnchorPane layoutX="18.0" layoutY="14.0" prefHeight="153.0" prefWidth="242.0" stylesheets="@../design/dashboard.css">
+                                       <children>
+                                          <FontAwesomeIcon fill="#ff2f00" glyphName="LOCK" layoutX="41.0" layoutY="95.0" size="4.5em" />
+                                          <Label layoutX="92.0" layoutY="110.0" text="Jumlah Akun">
+                                             <font>
+                                                <Font name="SimSun" size="20.0" />
+                                             </font>
+                                          </Label>
+                                          <Label layoutX="184.0" layoutY="21.0" text="0">
+                                             <font>
+                                                <Font name="Franklin Gothic Medium" size="29.0" />
+                                             </font>
+                                          </Label>
+                                       </children>
+                                       <styleClass>
+                                          <String fx:value="nav" />
+                                          <String fx:value="shadow" />
+                                       </styleClass>
+                                    </AnchorPane>
+                                    <AnchorPane layoutX="289.0" layoutY="14.0" prefHeight="153.0" prefWidth="245.0" stylesheets="@../design/dashboard.css">
+                                       <children>
+                                          <FontAwesomeIcon fill="#ff2f00" glyphName="USERS" layoutX="26.0" layoutY="88.0" size="4em" />
+                                          <Label layoutX="102.0" layoutY="105.0" text="Jumlah Siswa">
+                                             <font>
+                                                <Font name="SimSun" size="20.0" />
+                                             </font>
+                                          </Label>
+                                          <Label layoutX="184.0" layoutY="18.0" text="0">
+                                             <font>
+                                                <Font name="Franklin Gothic Medium" size="29.0" />
+                                             </font>
+                                          </Label>
+                                       </children>
+                                       <styleClass>
+                                          <String fx:value="nav" />
+                                          <String fx:value="shadow" />
+                                       </styleClass>
+                                    </AnchorPane>
+                                    <AnchorPane layoutX="570.0" layoutY="14.0" prefHeight="153.0" prefWidth="239.0" stylesheets="@../design/dashboard.css">
+                                       <children>
+                                          <FontAwesomeIcon fill="#ff2f00" glyphName="USER" layoutX="35.0" layoutY="81.0" size="4em" />
+                                          <Label layoutX="94.0" layoutY="94.0" text="Jumlah Akun">
+                                             <font>
+                                                <Font name="SimSun" size="20.0" />
+                                             </font>
+                                          </Label>
+                                          <Label layoutX="195.0" layoutY="23.0" text="0">
+                                             <font>
+                                                <Font name="Franklin Gothic Medium" size="29.0" />
+                                             </font>
+                                          </Label>
+                                       </children>
+                                       <styleClass>
+                                          <String fx:value="nav" />
+                                          <String fx:value="shadow" />
+                                       </styleClass>
+                                    </AnchorPane>
+                                 </children>
+                              </AnchorPane>
+                              <AnchorPane layoutX="22.0" layoutY="240.0" prefHeight="285.0" prefWidth="828.0" stylesheets="@../design/dashboard.css">
+                                 <styleClass>
+                                    <String fx:value="shadow" />
+                                    <String fx:value="white-bg" />
+                                 </styleClass>
+                                 <children>
+                                    <AnchorPane layoutX="180.0" layoutY="51.0" prefHeight="285.0" prefWidth="828.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                       <children>
+                                          <AreaChart layoutX="100.0" layoutY="-102.0" prefHeight="298.0" prefWidth="828.0" title="Data Login Hari ini " AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                             <xAxis>
+                                                <CategoryAxis side="BOTTOM" />
+                                             </xAxis>
+                                             <yAxis>
+                                                <NumberAxis side="LEFT" />
+                                             </yAxis>
+                                          </AreaChart>
+                                       </children>
+                                    </AnchorPane>
+                                 </children>
+                              </AnchorPane>
+                           </children>
+                        </AnchorPane>
+                     </children>
+                  </AnchorPane>
+               </center>
+            </BorderPane>
+         </children>
+      </AnchorPane>
    </children>
 </StackPane>

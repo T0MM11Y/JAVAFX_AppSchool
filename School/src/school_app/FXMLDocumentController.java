@@ -4,20 +4,15 @@
  */
 package school_app;
 
+import java.io.IOException;
 import java.net.URL;
 import java.sql.ResultSet;
-import java.sql.SQLException;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 import java.util.ResourceBundle;
-import javafx.scene.Node;
 import javafx.stage.Stage;
 
-import javax.naming.spi.DirStateFactory.Result;
-
 import com.mysql.jdbc.Connection;
-import com.mysql.jdbc.PreparedStatement;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -30,7 +25,6 @@ import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
-import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.scene.control.Alert.AlertType;
@@ -41,6 +35,7 @@ import javafx.stage.Stage;
  * @author T0MM11Y
  */
 public class FXMLDocumentController implements Initializable {
+   
 
     @FXML
     private Button kepsek_btn_login;
@@ -92,18 +87,18 @@ public class FXMLDocumentController implements Initializable {
                 if (result.next()) {
                     successMessage("Login Berhasil");
                     Parent root = FXMLLoader.load(getClass().getResource("KepsekMainForm.fxml"));
-                
+
                     Stage stage = new Stage();
                     stage.setTitle("Kepala Sekolah Main Form");
                     stage.setScene(new Scene(root));
-                
+
                     stage.show();
                     kepsek_btn_login.getScene().getWindow().hide();
-                
+
                 } else {
                     emptyFieldErrorMessage("Username atau Password Salah");
                 }
-                
+
             }
         } catch (Exception e) {
 
