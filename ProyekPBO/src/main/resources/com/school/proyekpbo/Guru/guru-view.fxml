@@ -18,7 +18,7 @@
       </Label>
       <Pane layoutX="14.0" layoutY="70.0" prefHeight="245.0" prefWidth="283.0" style="-fx-background-color: grey;">
          <children>
-            <Label layoutX="34.0" layoutY="29.0" text="Nama">
+            <Label layoutX="34.0" layoutY="29.0" text="Nama Lengkap">
                <font>
                   <Font name="System Bold" size="16.0" />
                </font>

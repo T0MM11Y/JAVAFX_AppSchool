@@ -12,7 +12,7 @@ import java.util.logging.*;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.scene.control.TreeTableView;
-import javafx.scene.control.TableRow;
+import javafx.scene.control.Alert.AlertType;
 
 public class GuruController implements Initializable{
     @FXML
@@ -55,6 +55,15 @@ public class GuruController implements Initializable{
         phone = txtPhone.getText();
         password = txtPassword.getText();
 
+        if (stname.isEmpty() || phone.isEmpty() || password.isEmpty()) {
+            Alert alert = new Alert(AlertType.WARNING);
+            alert.setTitle("Warning");
+            alert.setHeaderText("Data Tidak Lengkap");
+            alert.setContentText("Isi semua kolom data");
+            alert.showAndWait();
+            return;
+        }
+
         try {
             pst = conn.prepareStatement("insert into guru(name, phone, password)values(?,?,?)");
             pst.setString(1, stname);
@@ -62,11 +71,11 @@ public class GuruController implements Initializable{
             pst.setString(3, password);
             pst.executeUpdate();
 
-            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+            Alert alert = new Alert(AlertType.INFORMATION);
             alert.setTitle("Teacher Registration");
 
             alert.setHeaderText("Teacher Registration");
-            alert.setContentText("Record Added!!!");
+            alert.setContentText("Berhasil ditambahkan!");
 
             alert.showAndWait();
 
@@ -149,13 +158,85 @@ public class GuruController implements Initializable{
 
     @FXML
     void Delete(ActionEvent event) {
+        Connect();
+        myIndex = table.getSelectionModel().getSelectedIndex();
 
+        if (myIndex >= 0) {
+            TreeItem<Guru> selectedItem = table.getSelectionModel().getSelectedItem();
+
+            if (selectedItem != null) {
+                id = Integer.parseInt(selectedItem.getValue().getId());
+
+                try {
+                    pst = conn.prepareStatement("delete from guru where id = ? ");
+                    pst.setInt(1, id);
+                    pst.executeUpdate();
+
+                    Alert alert = new Alert(AlertType.INFORMATION);
+                    alert.setTitle("Teacher Registration");
+                    alert.setHeaderText("Teacher Registration");
+                    alert.setContentText("Berhasil dihapus!");
+                    alert.showAndWait();
+
+                    table();
+                } catch (SQLException ex) {
+                    Logger.getLogger(GuruController.class.getName()).log(Level.SEVERE, null, ex);
+                }
+            }
+        } else {
+            Alert alert = new Alert(AlertType.WARNING);
+            alert.setTitle("Warning");
+            alert.setHeaderText("Tidak ada Pilihan");
+            alert.setContentText("Pilih Data Guru yang ingin di Hapus");
+            alert.showAndWait();
+        }
     }
 
     @FXML
     void Update(ActionEvent event) {
+        String stname, phone, password;
+        Connect();
+        myIndex = table.getSelectionModel().getSelectedIndex();
 
+        if (myIndex >= 0) {
+            TreeItem<Guru> selectedItem = table.getSelectionModel().getSelectedItem();
+
+            if (selectedItem != null) {
+                Guru selectedGuru = selectedItem.getValue();
+                id = Integer.parseInt(selectedGuru.getId());
+
+                stname = txtName.getText();
+                phone = txtPhone.getText();
+                password = txtPassword.getText();
+
+                try {
+                    pst = conn.prepareStatement("update guru set name = ?, phone = ?, password = ? where id = ? ");
+                    pst.setString(1, stname);
+                    pst.setString(2, phone);
+                    pst.setString(3, password);
+                    pst.setInt(4, id);
+                    pst.executeUpdate();
+
+                    Alert alert = new Alert(Alert.AlertType.INFORMATION);
+                    alert.setTitle("Teacher Registration");
+                    alert.setHeaderText("Teacher Registration");
+                    alert.setContentText("Berhasil diupdate!");
+                    alert.showAndWait();
+
+                    table();
+                } catch (SQLException ex) {
+                    Logger.getLogger(GuruController.class.getName()).log(Level.SEVERE, null, ex);
+                }
+            } else {
+                Alert alert = new Alert(Alert.AlertType.WARNING);
+                alert.setTitle("Warning");
+                alert.setHeaderText("Tidak Ada Pilihan");
+                alert.setContentText("Pilih Data Guru yang ingin di Update");
+                alert.showAndWait();
+            }
+        }
     }
+
 
     Connection conn;
     PreparedStatement pst;
