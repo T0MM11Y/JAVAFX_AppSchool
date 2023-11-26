@@ -43,7 +43,7 @@ public class Guru extends Application {
     public void start(Stage stage) throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(Guru.class.getResource("guru-view.fxml"));
         Scene scene = new Scene(fxmlLoader.load(), 700, 400);
-        stage.setTitle("Hello!");
+        stage.setTitle("Guru");
         stage.setScene(scene);
         stage.show();
     }

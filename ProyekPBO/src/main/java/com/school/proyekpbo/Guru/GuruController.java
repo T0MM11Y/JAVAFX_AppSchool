@@ -65,15 +65,18 @@ public class GuruController implements Initializable{
         }
 
         try {
-            pst = conn.prepareStatement("insert into guru(name, phone, password)values(?,?,?)");
-            pst.setString(1, stname);
-            pst.setString(2, phone);
-            pst.setString(3, password);
+            int lastId = getLastIdFromDatabase();
+            int newId = lastId + 1;
+
+            pst = conn.prepareStatement("insert into guru(id, name, phone, password) values (?, ?, ?, ?)");
+            pst.setInt(1, newId);
+            pst.setString(2, stname);
+            pst.setString(3, phone);
+            pst.setString(4, password);
             pst.executeUpdate();
 
             Alert alert = new Alert(AlertType.INFORMATION);
             alert.setTitle("Teacher Registration");
-
             alert.setHeaderText("Teacher Registration");
             alert.setContentText("Berhasil ditambahkan!");
 
@@ -85,12 +88,49 @@ public class GuruController implements Initializable{
             txtPhone.setText("");
             txtPassword.setText("");
             txtName.requestFocus();
-        } catch (SQLException ex){
+        } catch (SQLException ex) {
             Logger.getLogger(GuruController.class.getName()).log(Level.SEVERE, null, ex);
         }
+    }
+    private int getLastIdFromDatabase() throws SQLException {
+        pst = conn.prepareStatement("SELECT MAX(id) AS last_id FROM guru");
+        ResultSet rs = pst.executeQuery();
 
+        if (rs.next()) {
+            return rs.getInt("last_id");
+        }
+
+        return 0;
     }
 
+    private void updateSequenceNumbers() {
+        ObservableList<Guru> gurus = FXCollections.observableArrayList();
+        try {
+            pst = conn.prepareStatement("select id, name, phone, password from guru");
+            ResultSet rs = pst.executeQuery();
+            while (rs.next()) {
+                Guru st = new Guru();
+                st.setId(rs.getString("id"));
+                st.setNama(rs.getString("name"));
+                st.setPhone(rs.getString("phone"));
+                st.setPassword(rs.getString("password"));
+                gurus.add(st);
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(GuruController.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        for (int i = 0; i < gurus.size(); i++) {
+            try {
+                int newId = i + 1;
+                pst = conn.prepareStatement("UPDATE guru SET id = ? WHERE id = ?");
+                pst.setInt(1, newId);
+                pst.setInt(2, Integer.parseInt(gurus.get(i).getId()));
+                pst.executeUpdate();
+            } catch (SQLException ex) {
+                Logger.getLogger(GuruController.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+    }
     public void table() {
         Connect();
         ObservableList<Guru> gurus = FXCollections.observableArrayList();
@@ -177,6 +217,7 @@ public class GuruController implements Initializable{
                     alert.setHeaderText("Teacher Registration");
                     alert.setContentText("Berhasil dihapus!");
                     alert.showAndWait();
+                    updateSequenceNumbers();
 
                     table();
                 } catch (SQLException ex) {
@@ -191,6 +232,7 @@ public class GuruController implements Initializable{
             alert.showAndWait();
         }
     }
+
 
     @FXML
     void Update(ActionEvent event) {
