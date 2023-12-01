@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.text.Font?>
+
+<StackPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="552.0" prefWidth="628.0" stylesheets="@../design/dashboard.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.KepsekGuruController">
+    <children>
+        <AnchorPane prefHeight="519.0" prefWidth="704.0" stylesheets="@../design/pageDesign.css" />
+        <AnchorPane prefHeight="552.0" prefWidth="621.0">
+            <children>
+                <AnchorPane layoutY="-4.0" prefHeight="45.0" prefWidth="628.0" styleClass="semi-top" stylesheets="@../design/dashboard.css" AnchorPane.bottomAnchor="511.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="-4.0">
+                    <children>
+                        <ImageView fitHeight="36.0" fitWidth="34.0" layoutX="21.0" layoutY="6.0" pickOnBounds="true" preserveRatio="true">
+                            <image>
+                                <Image url="@../design/SCHOOL.png" />
+                            </image>
+                        </ImageView>
+                        <Label layoutX="66.0" layoutY="12.0" prefHeight="25.0" prefWidth="197.0" text="Information School">
+                            <font>
+                                <Font name="Tahoma" size="18.0" />
+                            </font>
+                        </Label>
+                        <Button fx:id="kepsek_btn_back" layoutX="509.0" layoutY="7.0" mnemonicParsing="false" onMouseClicked="#back" prefHeight="25.0" prefWidth="32.0">
+                            <graphic>
+                                <ImageView fitHeight="26.0" fitWidth="26.0" pickOnBounds="true" preserveRatio="true">
+                                    <image>
+                                        <Image url="@../design/arrow-back-3783.png" />
+                                    </image>
+                                </ImageView>
+                            </graphic>
+                        </Button>
+                        <Button fx:id="kepsek_btn_logout" layoutX="561.0" layoutY="7.0" mnemonicParsing="false" onMouseClicked="#getLogout" prefHeight="10.0" prefWidth="24.0">
+                            <graphic>
+                                <ImageView fx:id="btn_logout" fitHeight="26.0" fitWidth="29.0">
+                                    <image>
+                                        <Image url="@../../../../../../JAVA%20FX/bangunan/src/design/logout.png" />
+                                    </image>
+                                </ImageView>
+                            </graphic>
+                        </Button>
+                    </children>
+                </AnchorPane>
+                <Label layoutX="22.0" layoutY="81.0" text="ID" />
+                <Label layoutX="21.0" layoutY="116.0" text="Nama" />
+                <TextField fx:id="isi_id" layoutX="82.0" layoutY="76.0" prefHeight="25.0" prefWidth="207.0" promptText="Masukkan ID" styleClass="textfield" stylesheets="@../design/dashboard.css" />
+                <Button fx:id="btn_tambah" layoutX="22.0" layoutY="153.0" mnemonicParsing="false" onMouseClicked="#AddGuru" prefHeight="25.0" prefWidth="135.0" text="Tambahkan" />
+                <Button fx:id="btn_clear" layoutX="349.0" layoutY="153.0" mnemonicParsing="false" onAction="#clear_table" prefHeight="25.0" prefWidth="119.0" text="Clear" />
+                <Button fx:id="btn_perbarui" layoutX="186.0" layoutY="153.0" mnemonicParsing="false" onAction="#Update" prefHeight="25.0" prefWidth="135.0" text="Perbarui" />
+                <Button fx:id="btn_hapus" layoutX="494.0" layoutY="153.0" mnemonicParsing="false" onAction="#Delete" prefHeight="25.0" prefWidth="119.0" text="Hapus" />
+
+                      <ScrollPane layoutX="21.0" layoutY="197.0" prefHeight="326.0" prefWidth="594.0">
+                    <content>
+                        <TableView fx:id="table_guru" prefHeight="400.0" prefWidth="594.0" styleClass="table-column" stylesheets="@../design/dashboard.css">
+                            <columns>
+                                <TableColumn fx:id="col_id" prefWidth="95.0" text="ID" />
+                                <TableColumn fx:id="col_nama" prefWidth="233.0" text="Nama" />
+                        <TableColumn fx:id="col_mapel" prefWidth="252.0" text="Mapel yang diajarkan" />
+                            </columns>
+                        </TableView>
+                    </content>
+                </ScrollPane>
+            <TextField fx:id="isi_nama" layoutX="82.0" layoutY="112.0" prefHeight="25.0" prefWidth="207.0" promptText="Masukkan Nama" styleClass="textfield" stylesheets="@../design/dashboard.css" />
+            <Label layoutX="336.0" layoutY="85.0" text="Pass" />
+            <Label layoutX="332.0" layoutY="119.0" text="Mapel" />
+            <TextField fx:id="isi_mapel" layoutX="381.0" layoutY="114.0" prefHeight="25.0" prefWidth="225.0" promptText="Masukkan Mapel" styleClass="textfield" stylesheets="@../design/dashboard.css" />
+            <PasswordField fx:id="isi_pass" layoutX="381.0" layoutY="79.0" prefHeight="25.0" prefWidth="225.0" promptText="Masukkan Password" styleClass="textfield" stylesheets="@../design/dashboard.css" />
+            <Label layoutX="22.0" layoutY="47.0" prefHeight="25.0" prefWidth="247.0" text="*clear dulu untuk untuk menambahkan guru" textFill="RED">
+               <font>
+                  <Font name="Tahoma" size="11.0" />
+               </font>
+            </Label>
+            </children>
+        </AnchorPane>
+    </children>
+</StackPane>

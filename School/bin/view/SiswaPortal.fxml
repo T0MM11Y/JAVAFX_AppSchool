@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.text.Font?>
+
+<StackPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="350.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.SiswaPortalController">
+    <children>   
+        <AnchorPane prefHeight="200.0" prefWidth="200.0" styleClass="white-bg" stylesheets="@../design/dashboard.css">
+            <children>
+                <Label layoutX="71.0" layoutY="24.0" text="Masuk ke akun anda">
+                    <font>
+                        <Font name="Courier New" size="20.0" />
+                    </font>
+                </Label>
+                <Label layoutX="112.0" layoutY="67.0" text="Siswa Section">
+                    <font>
+                        <Font name="Courier New" size="16.0" />
+                    </font>
+                </Label>
+                <TextField fx:id="siswa_id" layoutX="56.0" layoutY="216.0" onAction="#loginAccount" prefHeight="32.0" prefWidth="253.0" promptText="ID" styleClass="shadow" stylesheets="@../design/pageDesign.css" />
+                <PasswordField fx:id="siswa_pass" layoutX="56.0" layoutY="267.0" onAction="#loginAccount" prefHeight="32.0" prefWidth="253.0" promptText="Password" styleClass="textfield" stylesheets="@../design/pageDesign.css" />
+                <Button fx:id="siswa_btn_login" layoutX="117.0" layoutY="323.0" mnemonicParsing="false" onAction="#loginAccount" prefHeight="30.0" prefWidth="125.0" styleClass="btn" text="Login" />
+                <Label layoutX="28.0" layoutY="409.0" text="Other Account">
+                    <font>
+                        <Font name="Courier New" size="16.0" />
+                    </font>
+                </Label>
+                <ComboBox fx:id="siswa_select" layoutX="28.0" layoutY="427.0" onAction="#switchForm" opacity="0.4" prefWidth="150.0" promptText="Select" />
+            <ImageView fitHeight="91.0" fitWidth="101.0" layoutX="129.0" layoutY="103.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../design/boy_4537042.png" />
+               </image>
+            </ImageView>
+            </children>
+        </AnchorPane>
+    </children>
+</StackPane>
